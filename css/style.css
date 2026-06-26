@@ -1,0 +1,331 @@
+/* Base Variables & Reset */
+:root {
+    --primary-blue: #003366; /* Deep Cobalt Blue */
+    --secondary-green: #00A86B; /* Molecule Green */
+    --neutral-bg: #f4f5f7; /* Soft off-white / sterile light grey */
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--neutral-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--text-light);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--secondary-green);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 70vh;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--secondary-green);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--secondary-green);
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-blue);
+}
+
+/* 3D Viewer Container */
+.hero-visual {
+    flex: 1;
+    height: 400px;
+    background-color: var(--neutral-bg);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+}
+
+#molecule-viewer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+/* Sections */
+section {
+    padding: 60px 0;
+}
+
+.philosophy {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    text-align: center;
+}
+
+.philosophy h2 {
+    margin-bottom: 20px;
+}
+
+.philosophy p {
+    font-size: 1.1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Competencies Cards */
+.competencies {
+    text-align: center;
+}
+
+.competencies h2 {
+    color: var(--primary-blue);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.card-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: var(--text-light);
+    padding: 30px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--secondary-green);
+    text-align: left;
+}
+
+.card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--text-light);
+    color: #666;
+    font-size: 0.9rem;
+}
+/* ========================================= */
+/* MOBILE RESPONSIVE STYLES (MEDIA QUERIES)  */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* Stack Navigation */
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Stack Hero Section */
+    .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    /* Adjust 3D Viewer for Mobile */
+    .hero-visual {
+        height: 300px;
+    }
+
+    /* Stack the Cards */
+    .card-grid {
+        flex-direction: column;
+    }
+    
+    .card {
+        min-width: 100%;
+    }
+}
+/* ========================================= */
+/* SERVICES PAGE STYLES                      */
+/* ========================================= */
+
+.page-header {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    text-align: center;
+    padding: 35px 20px; /* Reduced padding from 60px to 35px */
+}
+
+.page-header h1 {
+    font-size: 2rem; /* Reduced font size from 2.5rem to 2rem */
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.1rem; /* Slightly smaller text */
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e0e6ed;
+}
+
+.services-breakdown {
+    background-color: var(--neutral-bg);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.service-detail-card {
+    background: var(--text-light);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--secondary-green);
+}
+
+.service-detail-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.service-detail-card ul {
+    list-style: none;
+}
+
+.service-detail-card li {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.service-detail-card li strong {
+    color: var(--text-dark);
+    display: block; /* Puts the bold title on its own line */
+    margin-bottom: 4px;
+}
+
+/* Make Services Grid Stack on Mobile */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+    
+    .page-header {
+        padding: 25px 20px; /* Even smaller padding for mobile screens */
+    }
+
+    .page-header h1 {
+        font-size: 1.6rem; /* Smaller mobile font size */
+    }
+}
+/* ========================================= */
+/* CONTACT PAGE STYLES                       */
+/* ========================================= */
+
+.contact-section {
+    padding: 60px 0;
+}
+
+.form-container {
+    max-width: 800px; /* Centers and limits the width of the form on desktop */
+    margin: 0 auto;   /* Automatically centers the container */
+    background: var(--text-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--primary-blue);
+    overflow: hidden; 
+}
