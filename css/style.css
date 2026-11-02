@@ -27,11 +27,12 @@ body {
 }
 
 /* Navigation */
+/* Navigation */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 5%;
+    padding: 15px max(5%, calc((100% - 1200px) / 2)); /* Dynamically aligns with the 1200px container */
     background-color: var(--text-light);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -89,14 +90,16 @@ body {
 }
 
 /* Hero Section */
+/* Hero Section */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 80px 50px;
+    padding: 40px 20px; /* Clean padding that aligns with the rest of the site */
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 70vh;
+    min-height: auto; /* REMOVED the 70vh stretch to eliminate the huge white gap */
+    gap: 40px;
 }
 
 .hero-content {
@@ -259,6 +262,20 @@ footer {
         min-width: 100%;
     }
 }
+/* Make sure these go INSIDE your @media (max-width: 768px) { ... } block */
+
+    .navbar-logo {
+        height: 40px; /* Reduces the logo image size slightly for phones */
+    }
+
+    .logo-text {
+        font-size: 1.2rem; /* Reduces the text size */
+        white-space: nowrap; /* Forces "LEVITT DYNAMICS" to stay on one single line! */
+    }
+
+    .nav-links a {
+        font-size: 0.95rem; /* Makes the menu links fit a bit better on small screens */
+    }
 /* ========================================= */
 /* SERVICES PAGE STYLES                      */
 /* ========================================= */
