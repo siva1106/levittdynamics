@@ -3,86 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon for Google Search & Browser Tabs -->
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/logo.png">
-    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
-    <title>Services | Levitt Dynamics</title>
+    <title>MD Suites | Levitt Dynamics</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/logo.png">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+    <!-- 4-Page Navigation Menu -->
     <nav class="navbar">
         <a href="index.html" class="logo-link">
             <div class="logo-container">
                 <img src="assets/logo.png" alt="Levitt Dynamics Logo" class="navbar-logo">
-                <span class="logo-text">
-                    <span class="brand-levitt">LEVITT</span> 
-                    <span class="brand-dynamics">DYNAMICS</span>
-                </span>
+                <span class="logo-text"><span class="brand-levitt">LEVITT</span> <span class="brand-dynamics">DYNAMICS</span></span>
             </div>
         </a>
         <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Submit a Project</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">MD Suites</a></li>
+            <li><a href="philosophy.html">Our Philosophy</a></li>
+            <li><a href="contact.html">Request a Quote</a></li>
         </ul>
     </nav>
 
     <!-- Page Header -->
     <header class="page-header">
         <div class="container">
-            <h1>Computational Services for Academic Research</h1>
-            <p>Affordable, reliable, and high-fidelity computational biology protocols designed to complement experimental laboratory data.</p>
+            <h1>The "Publication-Ready" MD Suites</h1>
+            <p>At Levitt Dynamics, our signature Molecular Dynamics suites are engineered for researchers aiming for high-impact journals. Every suite is an end-to-end standard MD service designed to take you from your starting coordinates to a polished manuscript draft.</p>
         </div>
     </header>
 
-    <!-- Services Breakdown -->
-    <section class="services-breakdown">
+    <section>
         <div class="container">
-            <div class="services-grid">
-                
-                <!-- Service 1 -->
-                <div class="service-detail-card">
-                    <h3>1. Custom Molecular Dynamics (MD) Simulations</h3>
-                    <ul>
-                        <li><strong>Objective:</strong> Gain physical insights into biomolecular behaviors over time.</li>
-                        <li><strong>What we deliver:</strong> Standard MD simulation trajectories, structural analysis reports (RMSD, RMSF, hydrogen bonding patterns), and publication-ready structural representations.</li>
-                        <li><strong>Perfect for:</strong> Academic labs needing high-resolution simulation data to support a paper submission or grant proposal.</li>
-                    </ul>
+            <!-- The Core Engine Block -->
+            <div class="core-engine-box">
+                <h3>The Core Engine: Included in Every Suite</h3>
+                <ul>
+                    <li><strong>Dual-State Simulation Pipeline:</strong> We run continuous standard MD on both your Apo-Protein (unbound state) and your Protein-Ligand Complex to provide a perfect comparative baseline.</li>
+                    <li><strong>Publication-Grade Analytics:</strong> High-resolution plotting of RMSD, RMSF, Radius of Gyration (Rg), SASA, and rigorous Hydrogen-bond profiling.</li>
+                    <li><strong>Scientific Write-up:</strong> Professional drafting of the computational Methodology and Figure Captions, formatted and ready to be inserted directly into your manuscript.</li>
+                </ul>
+            </div>
+
+            <!-- The 4 Suites Grid -->
+            <div class="grid-2">
+                <div class="suite-card">
+                    <h3>🟢 The Kinetic Suite</h3>
+                    <div class="suite-subtitle">Optimized for fundamental structural biology.</div>
+                    <p>Engineered for standard, compact globular proteins and single-domain enzymes. The Kinetic Suite provides rapid, highly accurate trajectory generation for straightforward targets.</p>
+                    <div class="ideal-for">👉 Ideal for: Standard enzymes, kinases, and fundamental stability studies.</div>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-detail-card">
-                    <h3>2. Virtual Screening of Compounds</h3>
-                    <ul>
-                        <li><strong>Objective:</strong> Filter large chemical libraries down to the most viable binding candidates.</li>
-                        <li><strong>What we deliver:</strong> Molecular docking studies, binding affinity scoring, and categorized lists of top-performing compound structures.</li>
-                        <li><strong>Perfect for:</strong> Laboratories initiating a drug discovery program on a limited budget.</li>
-                    </ul>
+                <div class="suite-card">
+                    <h3>🔵 The Momentum Suite</h3>
+                    <div class="suite-subtitle">Built for heavy biological machinery.</div>
+                    <p>When your research moves beyond standard enzymes, the Momentum Suite takes over. Designed to handle large multi-domain architectures and intricate protein-protein complexes that require expanded simulation boxes.</p>
+                    <div class="ideal-for">👉 Ideal for: Dimeric/tetrameric complexes, elongated proteins, and larger multi-ligand environments.</div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-detail-card">
-                    <h3>3. Lead Optimization & Basic Drug Discovery Pipelines</h3>
-                    <ul>
-                        <li><strong>Objective:</strong> Refine hits into lead structures with improved calculated affinity and pharmacokinetic profiles.</li>
-                        <li><strong>What we deliver:</strong> Computational modifications of functional groups, re-docking protocols, and ADME property prediction profiles.</li>
-                        <li><strong>Perfect for:</strong> Translational research projects aiming for in-vivo testing phases.</li>
-                    </ul>
+                <div class="suite-card">
+                    <h3>🟣 The Resonance Suite</h3>
+                    <div class="suite-subtitle">Designed for complex structural environments.</div>
+                    <p>Our highest-tier standard suite, built specifically for massive atomic counts and complex solvation requirements.</p>
+                    <div class="ideal-for">👉 Ideal for: Transmembrane proteins (GPCRs, Ion Channels) and viral capsids.</div>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="service-detail-card">
-                    <h3>4. Academic Project Consultation & Review</h3>
-                    <ul>
-                        <li><strong>Objective:</strong> Expert feedback on computational biology manuscripts, grant protocols, or pipeline designs.</li>
-                        <li><strong>What we deliver:</strong> Critical review, protocol suggestion reports, and data interpretation support to ensure your computational results are interpreted effectively.</li>
-                        <li><strong>Perfect for:</strong> Non-computational labs looking to add rigorous in-silico components to their research.</li>
-                    </ul>
+                <div class="suite-card">
+                    <h3>⚫ The Continuum Custom</h3>
+                    <div class="suite-subtitle">Limitless scale for bespoke computational projects.</div>
+                    <p>For massive macromolecular assemblies or entirely custom multi-mutant experimental designs that defy standard categorization.</p>
+                    <div class="ideal-for">👉 Ideal for: Custom timescales, non-standard environments, and bespoke analyses.</div>
                 </div>
+            </div>
 
+            <!-- Bottom CTA -->
+            <div style="text-align: center; margin-top: 60px;">
+                <h2 style="color: var(--primary-blue); margin-bottom: 20px;">Ready to begin?</h2>
+                <a href="contact.html" class="btn-primary">Discuss Your System with Us</a>
             </div>
         </div>
     </section>
@@ -90,6 +89,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Levitt Dynamics. Accelerating Academic Research.</p>
+        <p><strong>Zero IP Claim. 100% Confidentiality.</strong> | levittdynamics@gmail.com</p>
     </footer>
 
 </body>
