@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="0DZvcTlCJePYdB1PbFu97ZRs6Vz9FszHgH2CLWsVcBQ" />
-    <title>Levitt Dynamics | Accelerating Academic Research</title>
+    <title>Levitt Dynamics | Computational Structural Biology</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-    <!-- Favicons (Strictly matched to Google Search & Apple Guidelines) -->
+   <!-- Favicons (Strictly matched to Google Search & Apple Guidelines) -->
     <link rel="icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/assets/logo.png"></head>
+    <link rel="apple-touch-icon" href="/assets/logo.png">
+</head>
 <body>
 
     <!-- 4-Page Navigation Menu with Hamburger -->
@@ -46,9 +46,10 @@
                 <a href="services.html" class="btn-primary">Explore Our MD Suites</a>
                 <a href="contact.html" class="btn-secondary">Request a Project Quote</a>
             </div>
+        </div>
         <div class="hero-visual">
-            <!-- Added data-spin back to make it auto-rotate! -->
-            <div id="molecule-viewer" class="viewer_3Dmoljs" data-pdb="3EQM" data-backgroundcolor="#f4f5f7" data-style="cartoon:color=spectrum" data-spin="axis:y;speed:0.4" data-nomouse="true"></div>
+            <!-- Aromatase (3EQM) - Auto-rotating, seamless background, cartoon & surface styling -->
+            <div id="molecule-viewer" class="viewer_3Dmoljs" data-pdb="3EQM" data-backgroundcolor="#f4f5f7" data-style="cartoon:color=#0A192F" data-surface="opacity:0.2;color:#00A86B" data-spin="axis:y;speed:0.5"></div>
         </div>
     </header>
 
@@ -96,16 +97,6 @@
         <p>&copy; 2026 Levitt Dynamics. Accelerating Academic Research.</p>
         <p><strong>Zero IP Claim. 100% Confidentiality.</strong> | levittdynamics@gmail.com</p>
     </footer>
-<!-- Mobile Menu Script -->
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-    </script>
-</body>
-</html>
+
 </body>
 </html>

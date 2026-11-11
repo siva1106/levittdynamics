@@ -22,8 +22,8 @@ body {
     background-color: var(--neutral-bg);
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: hidden; /* ADD THIS LINE to prevent mobile screen wobble */
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -105,43 +105,35 @@ body {
     border-radius: 3px;
     transition: all 0.3s;
 }
-/* =================================================== */
-/* 3. HERO SECTION (STRICT SIDE-BY-SIDE DESKTOP)       */
-/* =================================================== */
-
+/* ========================================= */
+/* 3. TECH HERO SECTION                      */
+/* ========================================= */
 .hero {
-    display: flex !important;
-    flex-direction: row !important; /* Forces left-to-right */
-    flex-wrap: nowrap !important; /* NEVER allows dropping to the next line */
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 60px 20px !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    gap: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: auto;
+    gap: 40px;
 }
 
 .hero-content { 
-    width: 55% !important; /* Exactly 55% of the left side */
+    flex: 1; 
     position: relative;
-    z-index: 10;
+    z-index: 9999; /* Massive z-index to guarantee buttons are on top */
+}
+.hero-content { 
+    flex: 1; 
+    position: relative;
+    z-index: 10; /* Lowered from 9999 so the menu can drop over it */
 }
 
-/* Fluid Heading */
-.hero-content h1 {
-    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-    color: var(--primary-blue);
-    line-height: 1.15;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
-}
-
-/* Fluid Body Paragraph */
 .hero-content p {
-    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    font-size: 1.1rem;
     margin-bottom: 30px;
     color: #444;
-    line-height: 1.6;
 }
 
 .button-group {
@@ -150,41 +142,53 @@ body {
     flex-wrap: wrap;
 }
 
-/* Keep your btn-primary and btn-secondary styles exactly the same here */
 .btn-primary, .btn-secondary {
     display: inline-block;
-    padding: 12px 24px;
-    font-size: 1rem;
+    padding: 12px 25px;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 5px;
     text-decoration: none;
-    transition: all 0.25s ease;
-    text-align: center;
+    transition: all 0.3s;
 }
 
-.btn-primary { background-color: var(--secondary-green); color: var(--text-light); }
-.btn-primary:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
-.btn-secondary { background-color: transparent; color: var(--primary-blue); border: 2px solid var(--primary-blue); }
-.btn-secondary:hover { background-color: var(--primary-blue); color: var(--text-light); transform: translateY(-2px); }
+.btn-primary {
+    background-color: var(--secondary-green);
+    color: var(--text-light);
+}
 
+.btn-primary:hover { background-color: var(--primary-blue); }
 
-/* Strictly locks 3D Molecule into the right side */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+}
+
+/* 3D Visual Box */
 .hero-visual {
-    width: 45% !important; /* Exactly 45% of the right side */
-    height: 450px !important; 
-    background-color: transparent !important;
+    flex: 1;
+    width: 100%;
+    height: 400px;
+    background-color: transparent;
     position: relative;
-    z-index: 1;
-    pointer-events: none !important; /* Prevents mobile scrolling freeze */
+    z-index: 1; 
+    overflow: hidden;
+    pointer-events: none !important; 
 }
 
 #molecule-viewer {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
 }
+
 /* ========================================= */
 /* 4. SECTIONS & GRIDS (HOME & SUITES)       */
 /* ========================================= */
@@ -371,15 +375,13 @@ footer {
 }
 footer strong { color: #fff; }
 
-/* ========================================= */
-/* 7. MOBILE RESPONSIVE STYLES               */
-/* ========================================= */
 @media (max-width: 768px) {
-    /* Stack on mobile phones */
-    .hero { 
-        flex-direction: column !important; /* Changes left-to-right to top-to-bottom */
-        padding: 30px 20px !important; 
-        text-align: center !important; 
+    /* Navbar with Hamburger Layout */
+    .navbar { 
+        flex-direction: row; /* Keeps logo and button side-by-side */
+        justify-content: space-between; 
+        padding: 15px 20px; 
+        position: relative;
     }
     
     .navbar-logo { height: 35px; }
@@ -388,6 +390,7 @@ footer strong { color: #fff; }
     /* Show the 3-line button */
     .hamburger { display: flex; }
     
+    /* Hide links by default, turn into dropdown */
     .nav-links { 
         display: none; 
         flex-direction: column; 
@@ -414,17 +417,9 @@ footer strong { color: #fff; }
     }
 
     /* Rest of mobile styles */
-     .hero-content, .hero-visual {
-        width: 100% !important; /* Takes full width on small screens */
-    }
-
-    .hero-visual { 
-        height: 300px !important; 
-    }
-    
-    .button-group { 
-        justify-content: center; 
-    }
+    .hero { flex-direction: column; padding: 30px 20px; text-align: center; }
+    .hero-content h1 { font-size: 2.2rem; }
+    .button-group { justify-content: center; }
     .hero-visual { height: 300px; }
     .grid-3, .grid-2 { grid-template-columns: 1fr; }
     .page-header h1 { font-size: 1.8rem; }
