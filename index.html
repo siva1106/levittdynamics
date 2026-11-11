@@ -51,9 +51,9 @@
             <!-- Tech Background applied via CSS, 3D Mol gets dark background -->
             <div class="hero-visual">
             <!-- Aromatase (3EQM) - Auto-rotating, seamless background, cartoon & surface styling -->
-            <!-- Removed the heavy surface mesh so it loads instantly on phones! -->
-            <div id="molecule-viewer" class="viewer_3Dmoljs" data-pdb="3EQM" data-backgroundcolor="#f4f5f7" data-style="cartoon:color=#0A192F" data-spin="axis:y;speed:0.5" data-nomouse="true"></div>
-    </header>
+            <<!-- Removed data-spin. The molecule will render statically so the phone processor doesn't freeze. -->
+            <div id="molecule-viewer" class="viewer_3Dmoljs" data-pdb="3EQM" data-backgroundcolor="#f4f5f7" data-style="cartoon:color=#0A192F" data-nomouse="true"></div>
+        </header>
 
     <!-- Section 2: Why Choose Levitt Dynamics? -->
     <section>
