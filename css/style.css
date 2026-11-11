@@ -87,7 +87,22 @@ body {
 .nav-links a:hover, .nav-links a.active {
     color: var(--secondary-green);
 }
+/* Hamburger Menu (3-line button) - Hidden on desktop */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 100;
+}
 
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
 /* ========================================= */
 /* 3. TECH HERO SECTION                      */
 /* ========================================= */
@@ -366,10 +381,47 @@ footer strong { color: #fff; }
 /* 7. MOBILE RESPONSIVE STYLES               */
 /* ========================================= */
 @media (max-width: 768px) {
-    .navbar { flex-direction: column; gap: 15px; padding: 15px 20px; }
-    .navbar-logo { height: 38px; }
-    .logo-text { font-size: 1.15rem; }
-    .nav-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
+    /* Navbar with Hamburger Layout */
+    .navbar { 
+        flex-direction: row; /* Keeps logo and button side-by-side */
+        justify-content: space-between; 
+        padding: 15px 20px; 
+        position: relative;
+    }
+    
+    .navbar-logo { height: 35px; }
+    .logo-text { font-size: 1.1rem; }
+    
+    /* Show the 3-line button */
+    .hamburger { display: flex; }
+    
+    /* Hide links by default, turn into dropdown */
+    .nav-links { 
+        display: none; 
+        flex-direction: column; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--text-light);
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 99;
+    }
+
+    /* Shows the dropdown when clicked */
+    .nav-links.show { display: flex; }
+    .nav-links a { font-size: 1.1rem; padding: 10px 0; display: block; border-bottom: 1px solid #eee; }
+
+    /* THE ULTIMATE 3D SCROLL FIX */
+    .hero-visual, 
+    .hero-visual canvas, 
+    #molecule-viewer {
+        pointer-events: none !important;
+        touch-action: auto !important; /* This FORCES the browser to allow scrolling! */
+    }
+
+    /* Rest of mobile styles */
     .hero { flex-direction: column; padding: 30px 20px; text-align: center; }
     .hero-content h1 { font-size: 2.2rem; }
     .button-group { justify-content: center; }

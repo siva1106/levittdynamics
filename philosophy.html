@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="/assets/logo.png"></head>
 <body>
 
-    <!-- 4-Page Navigation Menu -->
+    <!-- 4-Page Navigation Menu with Hamburger -->
     <nav class="navbar">
         <a href="index.html" class="logo-link">
             <div class="logo-container">
@@ -19,10 +19,18 @@
                 <span class="logo-text"><span class="brand-levitt">LEVITT</span> <span class="brand-dynamics">DYNAMICS</span></span>
             </div>
         </a>
-        <ul class="nav-links">
+        
+        <!-- The 3-Line Button (Hamburger) -->
+        <div class="hamburger" id="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">MD Suites</a></li>
-            <li><a href="philosophy.html" class="active">Our Philosophy</a></li>
+            <li><a href="philosophy.html">Our Philosophy</a></li>
             <li><a href="contact.html">Request a Quote</a></li>
         </ul>
     </nav>
@@ -52,6 +60,16 @@
         <p>&copy; 2026 Levitt Dynamics. Accelerating Academic Research.</p>
         <p><strong>Zero IP Claim. 100% Confidentiality.</strong> | levittdynamics@gmail.com</p>
     </footer>
-
+<!-- Mobile Menu Script -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
