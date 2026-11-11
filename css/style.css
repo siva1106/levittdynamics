@@ -106,35 +106,46 @@ body {
     transition: all 0.3s;
 }
 /* ========================================= */
-/* 3. TECH HERO SECTION                      */
+/* 3. GOOGLE FLUID RESPONSIVE HERO SYSTEM    */
 /* ========================================= */
+
 .hero {
+    /* Google Standard Fluid Container: centers on 4K, fits mobile */
+    width: min(100% - 2.5rem, 1280px);
+    margin-inline: auto;
+    
     display: flex;
+    flex-wrap: wrap; /* Auto-adapts when space runs out on smaller laptops */
     align-items: center;
     justify-content: space-between;
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: auto;
-    gap: 40px;
+    padding: clamp(30px, 5vw, 60px) 0;
+    gap: clamp(20px, 4vw, 50px);
+    position: relative;
 }
 
 .hero-content { 
-    flex: 1; 
+    /* Flexible basis: takes up half the space, but won't shrink below 320px */
+    flex: 1 1 340px; 
     position: relative;
-    z-index: 10; 
-}
-.hero-content h1 {
-    font-size: 3rem;
-    color: var(--primary-blue);
-    line-height: 1.2;
-    margin-bottom: 20px;
+    z-index: 10;
 }
 
+/* Fluid Heading using Google's clamp() formula */
+.hero-content h1 {
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    color: var(--primary-blue);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+/* Fluid Body Paragraph */
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.4vw, 1.12rem);
     margin-bottom: 30px;
     color: #444;
+    line-height: 1.6;
+    max-width: 580px;
 }
 
 .button-group {
@@ -145,11 +156,13 @@ body {
 
 .btn-primary, .btn-secondary {
     display: inline-block;
-    padding: 12px 25px;
+    padding: clamp(10px, 1.2vw, 14px) clamp(18px, 2vw, 28px);
+    font-size: clamp(0.9rem, 1vw, 1rem);
     font-weight: 600;
-    border-radius: 5px;
+    border-radius: 6px;
     text-decoration: none;
-    transition: all 0.3s;
+    transition: all 0.25s ease;
+    text-align: center;
 }
 
 .btn-primary {
@@ -157,7 +170,10 @@ body {
     color: var(--text-light);
 }
 
-.btn-primary:hover { background-color: var(--primary-blue); }
+.btn-primary:hover { 
+    background-color: var(--primary-blue); 
+    transform: translateY(-2px);
+}
 
 .btn-secondary {
     background-color: transparent;
@@ -168,28 +184,27 @@ body {
 .btn-secondary:hover {
     background-color: var(--primary-blue);
     color: var(--text-light);
+    transform: translateY(-2px);
 }
 
-/* 3D Visual Box */
+/* Fluid 3D Box (Scales with viewport width, bounded by clamp) */
 .hero-visual {
-    flex: 1;
+    flex: 1 1 340px;
     width: 100%;
-    height: 400px;
+    height: clamp(300px, 35vw, 460px); /* Proportional scaling on every monitor */
     background-color: transparent;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
     overflow: hidden;
-    pointer-events: none !important; 
+    pointer-events: none !important;
 }
 
 #molecule-viewer {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0; /* Modern Google CSS for top:0; right:0; bottom:0; left:0; */
 }
-
 /* ========================================= */
 /* 4. SECTIONS & GRIDS (HOME & SUITES)       */
 /* ========================================= */
