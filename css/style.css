@@ -105,33 +105,30 @@ body {
     border-radius: 3px;
     transition: all 0.3s;
 }
-/* ========================================= */
-/* 3. GOOGLE FLUID RESPONSIVE HERO SYSTEM    */
-/* ========================================= */
+/* =================================================== */
+/* 3. HERO SECTION (BULLETPROOF 2-COLUMN CSS GRID)     */
+/* =================================================== */
 
 .hero {
-    width: min(100% - 2.5rem, 1280px);
-    margin-inline: auto;
-    
-    /* Strictly side-by-side on desktop (NO wrapping) */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: clamp(30px, 4vw, 60px) 0;
-    gap: 40px;
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important; /* Strictly locks 2 columns: Left & Right */
+    align-items: center !important;
+    gap: 40px !important;
+    width: min(100% - 2.5rem, 1280px) !important;
+    margin: 0 auto !important;
+    padding: 40px 0 !important;
     position: relative;
 }
 
 .hero-content { 
-    flex: 1; 
-    min-width: 0; /* Prevents wide headings from pushing the 3D molecule down */
+    grid-column: 1 !important; /* FORCES text strictly to Column 1 (Left) */
     position: relative;
     z-index: 10;
 }
 
 /* Fluid Heading */
 .hero-content h1 {
-    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
     color: var(--primary-blue);
     line-height: 1.15;
     margin-bottom: 20px;
@@ -155,8 +152,8 @@ body {
 
 .btn-primary, .btn-secondary {
     display: inline-block;
-    padding: clamp(10px, 1.2vw, 14px) clamp(18px, 2vw, 28px);
-    font-size: clamp(0.9rem, 1vw, 1rem);
+    padding: 12px 24px;
+    font-size: 1rem;
     font-weight: 600;
     border-radius: 6px;
     text-decoration: none;
@@ -185,14 +182,12 @@ body {
     color: var(--text-light);
     transform: translateY(-2px);
 }
-
-/* Strictly locks the 3D Box on the right-hand side */
+/* Strictly locks 3D Molecule into Column 2 (Right) */
 .hero-visual {
-    flex: 1;
-    min-width: 0; /* Prevents overflow */
-    width: 100%;
-    height: clamp(380px, 40vw, 520px); /* Generous height on monitors */
-    background-color: transparent;
+    grid-column: 2 !important; /* FORCES molecule strictly to Column 2 (Right) */
+    width: 100% !important;
+    height: 480px !important; /* Generous height on monitors */
+    background-color: transparent !important;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -200,8 +195,8 @@ body {
 }
 
 #molecule-viewer {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     position: absolute;
     inset: 0;
 }
@@ -395,10 +390,10 @@ footer strong { color: #fff; }
 /* 7. MOBILE RESPONSIVE STYLES               */
 /* ========================================= */
 @media (max-width: 768px) {
-    /* Stacks only on mobile phones */
+    /* Collapses into 1 column on mobile phones */
     .hero { 
-        flex-direction: column; 
-        padding: 30px 20px; 
+        grid-template-columns: 1fr !important; 
+        padding: 30px 20px !important; 
         text-align: center; 
     }
     
