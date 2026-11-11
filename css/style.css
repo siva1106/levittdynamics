@@ -40,6 +40,8 @@ body {
     padding: 15px max(5%, calc((100% - 1200px) / 2));
     background-color: var(--text-light);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: relative; 
+    z-index: 99999; /* ADD THIS: Forces the navbar to the absolute top layer */
 }
 
 .logo-link {
@@ -120,9 +122,8 @@ body {
 .hero-content { 
     flex: 1; 
     position: relative;
-    z-index: 9999; /* Massive z-index to guarantee buttons are on top */
+    z-index: 10; /* Lowered from 9999 so the menu can drop over it */
 }
-
 .hero-content h1 {
     font-size: 3rem;
     color: var(--primary-blue);
@@ -393,7 +394,6 @@ footer strong { color: #fff; }
     /* Show the 3-line button */
     .hamburger { display: flex; }
     
-    /* Hide links by default, turn into dropdown */
     .nav-links { 
         display: none; 
         flex-direction: column; 
@@ -404,7 +404,7 @@ footer strong { color: #fff; }
         background-color: var(--text-light);
         padding: 20px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        z-index: 99;
+        z-index: 99999; /* UPDATE THIS: Forces the dropdown over the text */
     }
 
     /* Shows the dropdown when clicked */
