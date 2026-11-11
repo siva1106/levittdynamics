@@ -106,22 +106,23 @@ body {
     transition: all 0.3s;
 }
 /* =================================================== */
-/* 3. HERO SECTION (BULLETPROOF 2-COLUMN CSS GRID)     */
+/* 3. HERO SECTION (STRICT SIDE-BY-SIDE DESKTOP)       */
 /* =================================================== */
 
 .hero {
-    display: grid !important;
-    grid-template-columns: 1.1fr 0.9fr !important; /* Strictly locks 2 columns: Left & Right */
+    display: flex !important;
+    flex-direction: row !important; /* Forces left-to-right */
+    flex-wrap: nowrap !important; /* NEVER allows dropping to the next line */
     align-items: center !important;
-    gap: 40px !important;
-    width: min(100% - 2.5rem, 1280px) !important;
+    justify-content: space-between !important;
+    padding: 60px 20px !important;
+    max-width: 1200px !important;
     margin: 0 auto !important;
-    padding: 40px 0 !important;
-    position: relative;
+    gap: 40px !important;
 }
 
 .hero-content { 
-    grid-column: 1 !important; /* FORCES text strictly to Column 1 (Left) */
+    width: 55% !important; /* Exactly 55% of the left side */
     position: relative;
     z-index: 10;
 }
@@ -141,7 +142,6 @@ body {
     margin-bottom: 30px;
     color: #444;
     line-height: 1.6;
-    max-width: 540px;
 }
 
 .button-group {
@@ -150,6 +150,7 @@ body {
     flex-wrap: wrap;
 }
 
+/* Keep your btn-primary and btn-secondary styles exactly the same here */
 .btn-primary, .btn-secondary {
     display: inline-block;
     padding: 12px 24px;
@@ -161,44 +162,28 @@ body {
     text-align: center;
 }
 
-.btn-primary {
-    background-color: var(--secondary-green);
-    color: var(--text-light);
-}
+.btn-primary { background-color: var(--secondary-green); color: var(--text-light); }
+.btn-primary:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+.btn-secondary { background-color: transparent; color: var(--primary-blue); border: 2px solid var(--primary-blue); }
+.btn-secondary:hover { background-color: var(--primary-blue); color: var(--text-light); transform: translateY(-2px); }
 
-.btn-primary:hover { 
-    background-color: var(--primary-blue); 
-    transform: translateY(-2px);
-}
 
-.btn-secondary {
-    background-color: transparent;
-    color: var(--primary-blue);
-    border: 2px solid var(--primary-blue);
-}
-
-.btn-secondary:hover {
-    background-color: var(--primary-blue);
-    color: var(--text-light);
-    transform: translateY(-2px);
-}
-/* Strictly locks 3D Molecule into Column 2 (Right) */
+/* Strictly locks 3D Molecule into the right side */
 .hero-visual {
-    grid-column: 2 !important; /* FORCES molecule strictly to Column 2 (Right) */
-    width: 100% !important;
-    height: 480px !important; /* Generous height on monitors */
+    width: 45% !important; /* Exactly 45% of the right side */
+    height: 450px !important; 
     background-color: transparent !important;
     position: relative;
     z-index: 1;
-    overflow: hidden;
-    pointer-events: none !important;
+    pointer-events: none !important; /* Prevents mobile scrolling freeze */
 }
 
 #molecule-viewer {
     width: 100% !important;
     height: 100% !important;
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
 }
 /* ========================================= */
 /* 4. SECTIONS & GRIDS (HOME & SUITES)       */
@@ -390,11 +375,11 @@ footer strong { color: #fff; }
 /* 7. MOBILE RESPONSIVE STYLES               */
 /* ========================================= */
 @media (max-width: 768px) {
-    /* Collapses into 1 column on mobile phones */
+    /* Stack on mobile phones */
     .hero { 
-        grid-template-columns: 1fr !important; 
+        flex-direction: column !important; /* Changes left-to-right to top-to-bottom */
         padding: 30px 20px !important; 
-        text-align: center; 
+        text-align: center !important; 
     }
     
     .navbar-logo { height: 35px; }
@@ -429,9 +414,17 @@ footer strong { color: #fff; }
     }
 
     /* Rest of mobile styles */
-    .hero { flex-direction: column; padding: 30px 20px; text-align: center; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .button-group { justify-content: center; }
+     .hero-content, .hero-visual {
+        width: 100% !important; /* Takes full width on small screens */
+    }
+
+    .hero-visual { 
+        height: 300px !important; 
+    }
+    
+    .button-group { 
+        justify-content: center; 
+    }
     .hero-visual { height: 300px; }
     .grid-3, .grid-2 { grid-template-columns: 1fr; }
     .page-header h1 { font-size: 1.8rem; }
