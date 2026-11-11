@@ -122,7 +122,7 @@ body {
 .hero-content { 
     flex: 1; 
     position: relative;
-    z-index: 9999; /* Massive z-index to guarantee buttons are on top */
+    z-index: 10; 
 }
 .hero-content { 
     flex: 1; 
