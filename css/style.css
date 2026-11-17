@@ -1,10 +1,10 @@
 /* ========================================= */
-/* 1. BASE VARIABLES & RESET (V2)            */
+/* 1. BASE VARIABLES & FLUID RESET           */
 /* ========================================= */
 :root {
-    --primary-blue: #0A192F; /* Updated to a deeper, dark "Tech" Blue */
+    --primary-blue: #0A192F; 
     --secondary-green: #00A86B; 
-    --accent-blue: #112240; /* Lighter dark blue for shaded boxes */
+    --accent-blue: #112240; 
     --neutral-bg: #f4f5f7; 
     --text-dark: #2c3e50;
     --text-light: #ffffff;
@@ -18,30 +18,38 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
+html, body {
+    width: 100%;
+    max-width: 100vw;
     background-color: var(--neutral-bg);
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* Universal Container: Always keeps safe left/right margins on ALL monitors */
 .container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: clamp(20px, 5vw, 50px);
+    padding-right: clamp(20px, 5vw, 50px);
 }
 
 /* ========================================= */
-/* 2. NAVIGATION BAR                         */
+/* 2. UNIVERSAL NAVIGATION BAR               */
 /* ========================================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px max(5%, calc((100% - 1200px) / 2));
+    width: 100%;
+    /* Aligns perfectly with .container on all monitor sizes */
+    padding: 15px max(5vw, calc((100% - 1200px) / 2 + 40px));
     background-color: var(--text-light);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: relative; 
-    z-index: 99999; /* ADD THIS: Forces the navbar to the absolute top layer */
+    position: relative;
+    z-index: 99999;
 }
 
 .logo-link {
@@ -53,19 +61,19 @@ body {
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .navbar-logo {
-    height: 50px;
+    height: clamp(36px, 3.5vw, 48px);
     width: auto;
     display: block;
 }
 
 .logo-text {
-    font-size: 1.4rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     white-space: nowrap;
 }
 
@@ -75,27 +83,30 @@ body {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: clamp(15px, 2.2vw, 30px);
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: clamp(0.88rem, 1vw, 0.98rem);
+    white-space: nowrap;
     transition: color 0.3s;
 }
 
 .nav-links a:hover, .nav-links a.active {
     color: var(--secondary-green);
 }
-/* Hamburger Menu (3-line button) - Hidden on desktop */
+
+/* Hamburger Menu (3-line button) - Hidden on desktop/laptops */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
-    z-index: 100;
+    z-index: 100000;
 }
 
 .hamburger .line {
@@ -105,33 +116,43 @@ body {
     border-radius: 3px;
     transition: all 0.3s;
 }
+
 /* ========================================= */
-/* 3. TECH HERO SECTION                      */
+/* 3. FLUID HERO SECTION                     */
 /* ========================================= */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 60px 20px;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    min-height: auto;
-    gap: 40px;
+    padding: clamp(30px, 5vw, 60px) clamp(20px, 5vw, 50px);
+    gap: clamp(20px, 4vw, 40px);
+    position: relative;
 }
 
 .hero-content { 
-    flex: 1; 
+    flex: 1.1; 
+    min-width: 280px;
     position: relative;
-    z-index: 10; 
+    z-index: 10;
 }
-.hero-content { 
-    flex: 1; 
-    position: relative;
-    z-index: 10; /* Lowered from 9999 so the menu can drop over it */
+
+/* Fluid Typography: Scales smoothly for phones, laptops, and large monitors */
+.hero-content h1 {
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    color: var(--primary-blue);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--secondary-green);
 }
 
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
     margin-bottom: 30px;
     color: #444;
 }
@@ -144,11 +165,13 @@ body {
 
 .btn-primary, .btn-secondary {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 12px 24px;
     font-weight: 600;
+    font-size: 0.95rem;
     border-radius: 5px;
     text-decoration: none;
     transition: all 0.3s;
+    text-align: center;
 }
 
 .btn-primary {
@@ -171,14 +194,18 @@ body {
 
 /* 3D Visual Box */
 .hero-visual {
-    flex: 1;
+    flex: 0.9;
     width: 100%;
-    height: 400px;
+    height: clamp(280px, 32vw, 400px);
     background-color: transparent;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
     overflow: hidden;
-    pointer-events: none !important; 
+    pointer-events: none !important;
+}
+
+.hero-visual * {
+    pointer-events: none !important;
 }
 
 #molecule-viewer {
@@ -190,30 +217,33 @@ body {
 }
 
 /* ========================================= */
-/* 4. SECTIONS & GRIDS (HOME & SUITES)       */
+/* 4. SMART AUTO-FIT GRIDS (ALL MONITORS)    */
 /* ========================================= */
-section { padding: 60px 0; }
+section {
+    padding: clamp(40px, 6vw, 70px) 0;
+}
 
 .section-title {
     text-align: center;
     color: var(--primary-blue);
     margin-bottom: 40px;
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
 }
 
+/* Automatically fits 3, 2, or 1 columns based on monitor width */
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
+/* Automatically fits 2 or 1 columns based on monitor width */
 .grid-2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
 }
 
-/* Base Card Style */
 .card {
     background: var(--text-light);
     padding: 30px;
@@ -224,13 +254,12 @@ section { padding: 60px 0; }
 
 .card h3 {
     color: var(--primary-blue);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-size: 1.2rem;
 }
 
 .card p { font-size: 0.95rem; color: #555; }
 
-/* Text Blocks (Why Choose Us) */
 .text-block-row {
     display: flex;
     flex-direction: column;
@@ -244,6 +273,7 @@ section { padding: 60px 0; }
     padding: 25px;
     border-left: 4px solid var(--secondary-green);
     box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    border-radius: 0 8px 8px 0;
 }
 
 /* ========================================= */
@@ -254,28 +284,35 @@ section { padding: 60px 0; }
     background-image: radial-gradient(circle at right, var(--accent-blue) 0%, var(--primary-blue) 100%);
     color: var(--text-light);
     text-align: center;
-    padding: 40px 20px;
+    padding: clamp(25px, 4vw, 45px) 20px;
 }
 
-.page-header h1 { font-size: 2.2rem; margin-bottom: 10px; }
-.page-header p { font-size: 1.05rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; }
+.page-header h1 {
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    margin-bottom: 10px;
+}
 
-/* The Core Engine Box */
+.page-header p {
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .core-engine-box {
     background: var(--accent-blue);
     color: var(--text-light);
-    padding: 40px;
+    padding: clamp(25px, 4vw, 40px);
     border-radius: 8px;
     margin-bottom: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.core-engine-box h3 { color: var(--secondary-green); margin-bottom: 20px; font-size: 1.5rem; }
+.core-engine-box h3 { color: var(--secondary-green); margin-bottom: 20px; font-size: 1.4rem; }
 .core-engine-box ul { list-style: none; }
-.core-engine-box li { margin-bottom: 15px; font-size: 1rem; color: #d1d5db; }
+.core-engine-box li { margin-bottom: 15px; font-size: 0.98rem; color: #d1d5db; }
 .core-engine-box li strong { color: #fff; display: block; margin-bottom: 4px; }
 
-/* MD Suite Cards */
 .suite-card {
     background: #fff;
     padding: 30px;
@@ -283,30 +320,29 @@ section { padding: 60px 0; }
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     border: 1px solid #eaeaea;
 }
+
 .suite-card h3 { display: flex; align-items: center; gap: 10px; color: var(--primary-blue); margin-bottom: 10px; }
 .suite-card .suite-subtitle { font-style: italic; color: #666; margin-bottom: 15px; font-size: 0.9rem; }
 .suite-card .ideal-for { margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; font-size: 0.9rem; font-weight: 600; color: var(--primary-blue); }
 
-/* Philosophy Block */
 .quote-block {
     max-width: 900px;
     margin: 0 auto;
-    text-align: center;
 }
+
 .quote-text {
-    font-size: 1.4rem;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
     font-style: italic;
     color: var(--primary-blue);
     line-height: 1.6;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border-left: 5px solid var(--secondary-green);
     padding-left: 20px;
-    text-align: left;
 }
+
 .quote-subtext {
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
     color: #444;
-    text-align: left;
 }
 
 /* ========================================= */
@@ -315,10 +351,11 @@ section { padding: 60px 0; }
 .privacy-block {
     background: #fdfbf7;
     border: 1px solid #e2d9c3;
-    padding: 30px;
+    padding: clamp(20px, 3.5vw, 30px);
     border-radius: 8px;
     margin-bottom: 40px;
 }
+
 .privacy-block h3 { color: #856404; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
 .privacy-block ul { margin-left: 20px; color: #555; }
 .privacy-block li { margin-bottom: 10px; font-size: 0.95rem; }
@@ -326,7 +363,7 @@ section { padding: 60px 0; }
 
 .custom-form {
     background: #fff;
-    padding: 40px;
+    padding: clamp(20px, 4vw, 40px);
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     max-width: 800px;
@@ -334,7 +371,7 @@ section { padding: 60px 0; }
     border-top: 5px solid var(--primary-blue);
 }
 
-.form-group { margin-bottom: 25px; }
+.form-group { margin-bottom: 22px; }
 .form-group label { display: block; font-weight: 600; margin-bottom: 5px; color: var(--primary-blue); }
 .form-subtext { display: block; font-size: 0.85rem; color: #666; margin-bottom: 8px; }
 
@@ -346,11 +383,13 @@ section { padding: 60px 0; }
     font-size: 1rem;
     background: #fafafa;
 }
+
 .custom-form input:focus, .custom-form select:focus, .custom-form textarea:focus {
     outline: none;
     border-color: var(--secondary-green);
     background: #fff;
 }
+
 .custom-form button {
     width: 100%;
     padding: 15px;
@@ -358,70 +397,66 @@ section { padding: 60px 0; }
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
 }
+
 .custom-form button:hover { background: var(--primary-blue); }
 
-/* Footer */
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 30px 20px;
     background-color: var(--primary-blue);
     color: var(--text-muted);
     font-size: 0.9rem;
 }
+
 footer strong { color: #fff; }
 
+/* ========================================= */
+/* 7. TABLETS & SMALL LAPTOPS (< 950px)      */
+/* ========================================= */
+@media (max-width: 950px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .button-group {
+        justify-content: center;
+    }
+}
+
+/* ========================================= */
+/* 8. MOBILE PHONES (< 768px)                */
+/* ========================================= */
 @media (max-width: 768px) {
-    /* Navbar with Hamburger Layout */
     .navbar { 
-        flex-direction: row; /* Keeps logo and button side-by-side */
+        flex-direction: row; 
         justify-content: space-between; 
         padding: 15px 20px; 
-        position: relative;
     }
     
-    .navbar-logo { height: 35px; }
-    .logo-text { font-size: 1.1rem; }
-    
-    /* Show the 3-line button */
     .hamburger { display: flex; }
     
-    /* Hide links by default, turn into dropdown */
     .nav-links { 
         display: none; 
         flex-direction: column; 
+        align-items: flex-start;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background-color: var(--text-light);
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        z-index: 99999; /* UPDATE THIS: Forces the dropdown over the text */
+        padding: 15px 25px;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        z-index: 99999;
+        gap: 0;
     }
 
-    /* Shows the dropdown when clicked */
     .nav-links.show { display: flex; }
-    .nav-links a { font-size: 1.1rem; padding: 10px 0; display: block; border-bottom: 1px solid #eee; }
-
-    /* THE ULTIMATE 3D SCROLL FIX */
-    .hero-visual, 
-    .hero-visual canvas, 
-    #molecule-viewer {
-        pointer-events: none !important;
-        touch-action: auto !important; /* This FORCES the browser to allow scrolling! */
-    }
-
-    /* Rest of mobile styles */
-    .hero { flex-direction: column; padding: 30px 20px; text-align: center; }
-    .hero-content h1 { font-size: 2.2rem; }
-    .button-group { justify-content: center; }
-    .hero-visual { height: 300px; }
-    .grid-3, .grid-2 { grid-template-columns: 1fr; }
-    .page-header h1 { font-size: 1.8rem; }
-    .custom-form { padding: 25px; }
+    .nav-links li { width: 100%; }
+    .nav-links a { font-size: 1.05rem; padding: 12px 0; display: block; border-bottom: 1px solid #eee; width: 100%; }
+    .btn-primary, .btn-secondary { width: 100%; }
 }
